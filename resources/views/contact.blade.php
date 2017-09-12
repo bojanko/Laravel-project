@@ -2,4 +2,4 @@
 
 @section("title", "Contact Laravel-powered blog owner!")
 
-@section("content", "Contact page")
+@section("content", $content)
