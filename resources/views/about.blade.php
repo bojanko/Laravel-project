@@ -3,5 +3,6 @@
 @section("title", "About Laravel-powered blog app!")
 
 @section("content")
-    @include("page")
+    <h2>{{ $content['naslov'] }}</h2>
+    <p>{{ $content['sadrzaj'] }}</p>
 @endsection

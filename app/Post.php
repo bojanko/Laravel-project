@@ -8,4 +8,9 @@ class Post extends Model
 {
     protected $table = 'posts';
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'post_id');
+    }
 }

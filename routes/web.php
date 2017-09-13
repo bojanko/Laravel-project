@@ -13,6 +13,9 @@
 
 Route::get('/', 'PageController@home');
 
+Route::get('/post/{id}', 'PageController@showpost');
+Route::post('/post/{id}', 'PageController@comment_post');
+
 Route::get('/about', 'PageController@about');
 
 Route::get('/contact', 'PageController@contact');

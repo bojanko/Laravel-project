@@ -1,14 +1,9 @@
-<form method="post" action="/contact">
+<form method="post" action="">
   {{ csrf_field() }}
   <div class="form-group">
-    <label for="title">Title:</label>
-    <input type="text" name="title" class="form-control" id="title"
+    <label for="name">Name:</label>
+    <input type="text" name="title" class="form-control" id="name"
      value="{!! old('title') !!}">
-  </div>
-  <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="text" name="email" class="form-control" id="email"
-     value="{!! old('email') !!}">
   </div>
   <div class="form-group">
     <label for="txt">Text:</label>

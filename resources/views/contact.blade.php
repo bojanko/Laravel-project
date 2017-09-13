@@ -3,7 +3,8 @@
 @section("title", "Contact Laravel-powered blog owner!")
 
 @section("content")
-    @include("page")
+    <h2>{{ $content['naslov'] }}</h2>
+    <p>{{ $content['sadrzaj'] }}</p>
     <br />
     <h2>Contact me</h2>
     <br />
