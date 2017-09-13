@@ -2,15 +2,18 @@
   {{ csrf_field() }}
   <div class="form-group">
     <label for="title">Title:</label>
-    <input type="text" name="title" class="form-control" id="pwd">
+    <input type="text" name="title" class="form-control" id="pwd"
+     value="{!! old('title') !!}">
   </div>
   <div class="form-group">
     <label for="email">Email address:</label>
-    <input type="text" name="email" class="form-control" id="email">
+    <input type="text" name="email" class="form-control" id="email"
+     value="{!! old('email') !!}">
   </div>
   <div class="form-group">
     <label for="txt">Text:</label>
-    <textarea rows="10" name="text" class="form-control" id="txt"></textarea>
+    <textarea rows="10" name="text" class="form-control" id="txt"
+    >{!! old('text') !!}</textarea>
   </div>
 
   @if ($errors->any())
