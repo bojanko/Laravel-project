@@ -4,24 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Post;
+use App\Contact;
+use App\About;
+
 class PageController extends Controller
 {
     public function home(){
-      $data = array(
-          ["naslov" => "nas1", "tekst" => "tekst1"],
-          ["naslov" => "nas2", "tekst" => "tekst2"],
-          ["naslov" => "nas3", "tekst" => "tekst3"],
-          ["naslov" => "nas4", "tekst" => "tekst4"]
-      );
+      $data = Post::all();
 
       return view("home")->with("content", $data);
     }
 
     public function about(){
-      return view("about")->with("content", "About page");
+      $data = About::all();
+
+      return view("about")->with("content", $data);
     }
 
     public function contact(){
-      return view("contact")->with("content", "Contact page");
+      $data = Contact::all();
+
+      return view("contact")->with("content", $data);
     }
 }
