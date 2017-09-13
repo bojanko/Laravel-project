@@ -15,7 +15,7 @@ class PostSeeder extends Seeder
     {
       Post::truncate();
 
-      for($i = 1; $i <= 4; $i++){
+      for($i = 1; $i <= 20; $i++){
           $content = new Post();
           $content->naslov = "Example post ".$i;
           $content->sadrzaj = "This is example post No".$i.".";

@@ -4,5 +4,3 @@
     <p>{{ $post['sadrzaj'] }}</p>
 
 @endforeach
-
-{{ $content->links() }}

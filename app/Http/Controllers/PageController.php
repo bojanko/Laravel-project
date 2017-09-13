@@ -11,7 +11,7 @@ use App\About;
 class PageController extends Controller
 {
     public function home(){
-      $data = Post::all();
+      $data = Post::paginate(5);
 
       return view("home")->with("content", $data);
     }

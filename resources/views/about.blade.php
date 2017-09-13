@@ -3,5 +3,5 @@
 @section("title", "About Laravel-powered blog app!")
 
 @section("content")
-    @include("post")
+    @include("page")
 @endsection
