@@ -5,6 +5,15 @@
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
         </ul>
-        <button type="button" class="btn btn-default navbar-btn navbar-right">Log in</button>
+
+    @auth
+    <button type="button" class="btn btn-default navbar-btn navbar-right">Log out</button>
+    @endauth
+
+    @guest
+    <button type="button" class="btn btn-default navbar-btn navbar-right">Log in</button>
+    <button type="button" class="btn btn-default navbar-btn navbar-right">Register</button>
+    @endguest
+
     </div>
 </nav>
