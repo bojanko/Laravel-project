@@ -23,10 +23,13 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
+        $sum = $this->input('val1') + $this->input('val2');
+
         return [
             'username' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed',
+            'captcha' => 'in:'.$sum
         ];
     }
 }

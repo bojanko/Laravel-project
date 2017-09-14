@@ -35,6 +35,13 @@
             </ul>
         </div>
     @endif
+    <input name="val1" type="hidden" value="{{ $val1 = rand(1, 19) }}" >
+    <input name="val2" type="hidden" value="{{ $val2 = rand(1, 19) }}" >
+
+    <div class="form-group">
+      <label for="captcha">Enter result: {{ $val1 }} + {{ $val2 }}</label>
+      <input type="captcha" name="captcha" class="form-control" id="captcha">
+    </div>
 
     <button type="submit" class="btn btn-default btn-block">Submit</button>
   </form>

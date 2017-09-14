@@ -25,18 +25,10 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request){
         $user = User::where('email', '=', $request->input('email'))->get();
-
-        if(Hash::check($request->input('password'), $user[0]->password)){
-            Auth::login($user[0], false);
-            /////
-            Session::keep(['back_page']);
-            return redirect(Session::get('back_page'));
-        }
-        else{
-            Session::flash('password_error','Incorrect password!');
-            Session::keep(['back_page']);
-            return redirect('/login')->withInput();
-        }
+        Auth::login($user[0], false);
+        /////
+        Session::keep(['back_page']);
+        return redirect(Session::get('back_page'));
     }
 
     public function logout(){
