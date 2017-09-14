@@ -28,14 +28,14 @@ class LoginController extends Controller
         Auth::login($user[0], false);
         /////
         Session::keep(['back_page']);
-        return redirect(Session::get('back_page'));
+        return redirect(Session::get('back_page', '/'));
     }
 
     public function logout(){
         Auth::logout();
         /////
         Session::keep(['back_page']);
-        return redirect(Session::get('back_page'));
+        return redirect(Session::get('back_page', '/'));
     }
 
     public function register_page(){
@@ -82,7 +82,7 @@ class LoginController extends Controller
         $req->user_id = $user->id;
         $req->save();
 
-        Session::flash('request_message','Request received! Your role will update if admin accept your request.');
+        Session::flash('request_message','Request received! Your role will update if admin accepts your request.');
         return redirect('/profile')->with("user", Auth::user());
     }
 }

@@ -7,7 +7,7 @@
 <h3>Email: {{ $user['email'] }}</h3>
 <h3>Role: {{ $user['manager'] == 1 ? 'Admin' : 'Regular user' }}</h3>
 
-@unless(App\AdminRequest::where('email', '=', $user['email'])->exists())
+@unless(App\AdminRequest::where('email', '=', $user['email'])->exists() || ($user['manager'] == 1))
     <br />
       <a class="btn btn-default btn-block" href="/profile/request"
       >Request admin privileges</a>
