@@ -3,7 +3,7 @@
   <div class="form-group">
     <label for="name">Name:</label>
     <input type="text" name="title" class="form-control" id="name"
-     value="{!! old('title') !!}">
+     value="{{ old('title') !== null ? old('title') : Auth::user()->name }}">
   </div>
   <div class="form-group">
     <label for="txt">Text:</label>

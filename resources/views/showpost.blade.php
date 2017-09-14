@@ -17,6 +17,7 @@
 
         @foreach($comments as $com)
             <h3>{{ $com->ime }}</h3>
+            <p>{{ $com->sadrzaj }}</p>
         @endforeach
     @else
         <br />
@@ -24,6 +25,14 @@
     @endif
 
     <br />
-    <h2>Add comment</h2>
-    @include("comment.form")
+
+    @auth
+        <h2>Add comment</h2>
+        @include("comment.form")
+    @endauth
+
+    @guest
+        <h2>Please log in to comment</h2>
+    @endguest
+
 @endsection
