@@ -7,6 +7,20 @@
 <h3>Email: {{ $user['email'] }}</h3>
 <h3>Role: {{ $user['manager'] == 1 ? 'Admin' : 'Regular user' }}</h3>
 
+@unless(App\AdminRequest::where('email', '=', $user['email'])->exists())
+    <br />
+      <a class="btn btn-default btn-block" href="/profile/request"
+      >Request admin privileges</a>
+@endunless
+
+@if(Session::has('request_message'))
+    <br />
+    <div class="alert alert-warning">
+      <span class="glyphicon glyphicon-ok"></span>
+      <em> {!! session('request_message') !!}</em>
+    </div>
+@endif
+
 <br />
 
 <h3>Change password:</h3>

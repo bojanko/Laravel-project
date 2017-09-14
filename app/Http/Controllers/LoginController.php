@@ -10,6 +10,7 @@ use App\Http\Requests\ProfileRequest;
 use Session;
 use App\User;
 use App\Post;
+use App\AdminRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Route;
@@ -34,7 +35,7 @@ class LoginController extends Controller
         else{
             Session::flash('password_error','Incorrect password!');
             Session::keep(['back_page']);
-            return Redirect::to('/login')->withInput();
+            return redirect('/login')->withInput();
         }
     }
 
@@ -60,7 +61,7 @@ class LoginController extends Controller
 
         Session::flash('flash_message','Succesfully registered! Please log in now.');
         Session::keep(['back_page']);
-        return Redirect::to('/login');
+        return redirect('/login');
     }
 
     public function profile(){
@@ -75,6 +76,21 @@ class LoginController extends Controller
 
         Session::flash('password_change','Password changed succesfully!');
         Session::keep(['back_page']);
-        return view('login.profile')->with("user", Auth::user());
+        return redirect('/profile')->with("user", Auth::user());
+    }
+
+    public function request_admin(){
+        Session::keep(['back_page']);
+
+        $user = Auth::user();
+
+        $req = new AdminRequest();
+        $req->name = $user->name;
+        $req->email = $user->email;
+        $req->user_id = $user->id;
+        $req->save();
+
+        Session::flash('request_message','Request received! Your role will update if admin accept your request.');
+        return redirect('/profile')->with("user", Auth::user());
     }
 }
