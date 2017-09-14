@@ -13,6 +13,7 @@ use App\Post;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -24,7 +25,7 @@ class LoginController extends Controller
     public function login(LoginRequest $request){
         $user = User::where('email', '=', $request->input('email'))->get();
 
-        if($user[0]->password == $request->input('password')){
+        if(Hash::check($request->input('password'), $user[0]->password)){
             Auth::login($user[0], false);
             /////
             Session::keep(['back_page']);
@@ -53,7 +54,7 @@ class LoginController extends Controller
         $content = new User();
         $content->name = $request->input("username");
         $content->email = $request->input("email");
-        $content->password = $request->input("password");
+        $content->password = Hash::make($request->input("password"));
         $content->manager = 0;
         $content->save();
 
@@ -69,7 +70,7 @@ class LoginController extends Controller
 
     public function profile_update(ProfileRequest $request){
         $user = Auth::user();
-        $user->password = $request->input("password");
+        $user->password = Hash::make($request->input("password"));
         $user->save();
 
         Session::flash('password_change','Password changed succesfully!');

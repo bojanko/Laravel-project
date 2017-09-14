@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 use App\User;
 
@@ -18,7 +19,7 @@ class UserSeeder extends Seeder
       $content = new User();
       $content->name = 'Admin';
 	  $content->email = 'admin@homestead.app';
-      $content->password = 'Admin';
+      $content->password = Hash::make('Admin');
       $content->manager = 1;
       $content->save();
     }
