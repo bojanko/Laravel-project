@@ -20,3 +20,15 @@ Route::get('/about', 'PageController@about');
 
 Route::get('/contact', 'PageController@contact');
 Route::post('/contact', 'PageController@contact_mail');
+
+
+Route::get('/login', 'LoginController@login_page');
+Route::post('/login', 'LoginController@login');
+
+Route::get('/register', 'LoginController@register_page');
+Route::post('/register', 'LoginController@register');
+
+Route::get('/logout', 'LoginController@logout');
+
+Route::get('/profile', 'LoginController@profile');
+Route::post('/profile', 'LoginController@profile_update');

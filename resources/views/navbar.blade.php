@@ -7,12 +7,34 @@
         </ul>
 
     @auth
-    <button type="button" class="btn btn-default navbar-btn navbar-right">Log out</button>
+        <div class="btn-group dropdown navbar-right">
+            <button class="btn btn-default dropdown-toggle navbar-btn"
+            type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="true">
+                Menu
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="/profile">My profile</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
     @endauth
 
     @guest
-    <button type="button" class="btn btn-default navbar-btn navbar-right">Log in</button>
-    <button type="button" class="btn btn-default navbar-btn navbar-right">Register</button>
+    <div class="btn-group dropdown navbar-right">
+        <button class="btn btn-default dropdown-toggle navbar-btn"
+        type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="true">
+            Menu
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+    </div>
     @endguest
 
     </div>
