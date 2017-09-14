@@ -12,16 +12,12 @@ use App\User;
 use App\Post;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Route;
 
 class LoginController extends Controller
 {
-    private function return_home(){
-      $data = Post::paginate(5);
-
-      return Redirect::to('/')->with("content", $data);
-    }
-
     public function login_page(){
+        Session::keep(['back_page']);
         return view('login.login');
     }
 
@@ -30,20 +26,26 @@ class LoginController extends Controller
 
         if($user[0]->password == $request->input('password')){
             Auth::login($user[0], false);
-            return $this->return_home();
+            /////
+            Session::keep(['back_page']);
+            return redirect(Session::get('back_page'));
         }
         else{
             Session::flash('password_error','Incorrect password!');
+            Session::keep(['back_page']);
             return Redirect::to('/login')->withInput();
         }
     }
 
     public function logout(){
         Auth::logout();
-        return $this->return_home();
+        /////
+        Session::keep(['back_page']);
+        return redirect(Session::get('back_page'));
     }
 
     public function register_page(){
+        Session::keep(['back_page']);
         return view('login.register');
     }
 
@@ -56,10 +58,12 @@ class LoginController extends Controller
         $content->save();
 
         Session::flash('flash_message','Succesfully registered! Please log in now.');
+        Session::keep(['back_page']);
         return Redirect::to('/login');
     }
 
     public function profile(){
+        Session::keep(['back_page']);
         return view('login.profile')->with("user", Auth::user());
     }
 
@@ -69,6 +73,7 @@ class LoginController extends Controller
         $user->save();
 
         Session::flash('password_change','Password changed succesfully!');
+        Session::keep(['back_page']);
         return view('login.profile')->with("user", Auth::user());
     }
 }

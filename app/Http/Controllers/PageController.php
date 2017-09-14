@@ -20,12 +20,14 @@ class PageController extends Controller
     public function home(){
       $data = Post::paginate(5);
 
+      Session::flash('back_page', '/');
       return view("home")->with("content", $data);
     }
 
     public function showpost($id){
       $data = Post::findOrFail($id);
 
+      Session::flash('back_page', '/post/'.$id);
       return view("showpost")->with("content", $data)->with("comments",
       $data->comments->where("odobren", 1));
     }
@@ -41,6 +43,7 @@ class PageController extends Controller
       $data = Post::findOrFail($id);
       Session::flash('flash_message','Comment sent! It will be visible after moderation.');
 
+      Session::flash('back_page', '/post/'.$id);
       return view("showpost")->with("content", $data)->with("comments",
       $data->comments->where("odobren", 1));
     }
@@ -48,12 +51,14 @@ class PageController extends Controller
     public function about(){
       $data = About::all();
 
+      Session::flash('back_page', '/about');
       return view("about")->with("content", $data[0]);
     }
 
     public function contact(){
       $data = Contact::all();
 
+      Session::flash('back_page', '/contact');
       return view("contact")->with("content", $data[0]);
     }
     public function contact_mail(ContactRequest $request){
@@ -70,6 +75,8 @@ class PageController extends Controller
 
       $data = Contact::all();
       Session::flash('flash_message','Message sent!');
+
+      Session::flash('back_page', '/contact');
       return view("contact")->with("content", $data);
     }
 }
