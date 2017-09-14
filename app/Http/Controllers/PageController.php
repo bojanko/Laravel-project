@@ -44,8 +44,7 @@ class PageController extends Controller
       Session::flash('flash_message','Comment sent! It will be visible after moderation.');
 
       Session::flash('back_page', '/post/'.$id);
-      return view("showpost")->with("content", $data)->with("comments",
-      $data->comments->where("odobren", 1));
+      return redirect('/post/'.$id);
     }
 
     public function about(){
@@ -77,6 +76,6 @@ class PageController extends Controller
       Session::flash('flash_message','Message sent!');
 
       Session::flash('back_page', '/contact');
-      return view("contact")->with("content", $data);
+      return redirect('/contact');
     }
 }
