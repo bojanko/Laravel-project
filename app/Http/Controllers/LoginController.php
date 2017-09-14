@@ -60,27 +60,15 @@ class LoginController extends Controller
     }
 
     public function profile(){
-        if(!Auth::check()){
-            return $this->return_home();
-        }
-        else{
-            return view('login.profile')->with("user", Auth::user());
-        }
-
+        return view('login.profile')->with("user", Auth::user());
     }
 
     public function profile_update(ProfileRequest $request){
-        if(!Auth::check()){
-            return $this->return_home();
-        }
-        else{
-            $user = Auth::user();
-            $user->password = $request->input("password");
-            $user->save();
+        $user = Auth::user();
+        $user->password = $request->input("password");
+        $user->save();
 
-            Session::flash('password_change','Password changed succesfully!');
-            return view('login.profile')->with("user", Auth::user());
-        }
-
+        Session::flash('password_change','Password changed succesfully!');
+        return view('login.profile')->with("user", Auth::user());
     }
 }

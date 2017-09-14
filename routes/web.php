@@ -30,5 +30,5 @@ Route::post('/register', 'LoginController@register');
 
 Route::get('/logout', 'LoginController@logout');
 
-Route::get('/profile', 'LoginController@profile');
-Route::post('/profile', 'LoginController@profile_update');
+Route::get('/profile', 'LoginController@profile')->middleware('protect.admin.pages');
+Route::post('/profile', 'LoginController@profile_update')->middleware('protect.admin.pages');
