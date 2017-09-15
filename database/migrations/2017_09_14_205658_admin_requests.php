@@ -19,7 +19,7 @@ class AdminRequests extends Migration
             $table->string('name');
 			$table->string('email');
             $table->integer('user_id');
-			$table->integer('active')->default(0);
+			$table->integer('active')->default(1);
         });
     }
 

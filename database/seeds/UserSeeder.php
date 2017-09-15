@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
 	  $content->email = 'admin@homestead.app';
       $content->password = Hash::make('Admin');
       $content->manager = 1;
+	  $content->superadmin = 1;
       $content->save();
     }
 }

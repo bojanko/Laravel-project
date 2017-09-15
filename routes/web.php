@@ -46,3 +46,11 @@ Route::post('/admin/contact', 'AdminController@contact_modify')->middleware('pro
 Route::get('/admin/comments', 'AdminController@comments')->middleware('protect.admin.pages.admin');
 Route::get('/admin/comments/approve/{id}', 'AdminController@comments_approve')->middleware('protect.admin.pages.admin');
 Route::get('/admin/comments/delete/{id}', 'AdminController@comments_delete')->middleware('protect.admin.pages.admin');
+
+Route::get('/admin/adminrequests', 'AdminController@adminrequests')->middleware('protect.admin.pages.admin');
+Route::get('/admin/adminrequests/approve/{user_id}_{req_id}', 'AdminController@adminrequests_approve')->middleware('protect.admin.pages.admin');
+Route::get('/admin/adminrequests/disapprove/{req_id}', 'AdminController@adminrequests_disapprove')->middleware('protect.admin.pages.admin');
+
+Route::get('/admin/manageuser', 'AdminController@manageuser')->middleware('protect.admin.pages.admin');
+Route::get('/admin/manageuser/revokeadmin/{id}', 'AdminController@manageuser_revokeadmin')->middleware('protect.admin.pages.admin');
+Route::get('/admin/manageuser/delete/{id}', 'AdminController@manageuser_delete')->middleware('protect.admin.pages.admin');

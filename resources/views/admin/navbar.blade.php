@@ -9,7 +9,7 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
            <li><a href="/admin/addpost">Add new post</a></li>
-           <li><a href="/admin/listpost">List all posts</a></li>
+           <li><a href="/admin/managepost">Manage posts</a></li>
        </ul>
    </div>
 
@@ -22,7 +22,7 @@
        </button>
        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
             <li><a href="/admin/adminrequests">Admin requests</a></li>
-            <li><a href="/admin/listuser">List all users</a></li>
+            <li><a href="/admin/manageuser">Manage users</a></li>
         </ul>
     </div>
 
