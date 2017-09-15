@@ -12,6 +12,8 @@ use App\Comment;
 use App\Http\Requests\ContactRequest;
 use App\Http\Requests\CommentRequest;
 
+use Illuminate\Support\Facades\Auth;
+
 use Mail;
 use Session;
 
@@ -37,11 +39,16 @@ class PageController extends Controller
       $content->post_id = $id;
       $content->ime = $request->input("title");
       $content->sadrzaj = $request->input("text");
-      $content->odobren = 0;
+      if(Auth::user()->manager === 1){
+          $content->odobren = 1;
+      }
+      else{
+          Session::flash('flash_message','Comment sent! It will be visible after moderation.');
+          $content->odobren = 0;
+      }
       $content->save();
 
       $data = Post::findOrFail($id);
-      Session::flash('flash_message','Comment sent! It will be visible after moderation.');
 
       Session::flash('back_page', '/post/'.$id);
       return redirect('/post/'.$id);

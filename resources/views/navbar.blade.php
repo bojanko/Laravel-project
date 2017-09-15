@@ -16,6 +16,11 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a href="/profile">My profile</a></li>
+
+                @if(Auth::user()->manager == 1)
+                    <li><a href="/admin">Admin pages</a></li>
+                @endif
+
                 <li role="separator" class="divider"></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>

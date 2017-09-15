@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use Closure;
 use App\Post;
 
-class ProtectAdminPages
+class ProtectAdminPagesAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class ProtectAdminPages
      * @param  \Closure  $next
      * @return mixed
      */
-	 
+	
     public function handle($request, Closure $next)
     {
-		if(!Auth::check()){
+		if(!Auth::check() || ( Auth::user()->manager === 0 )){
 			return redirect('/');
 		}
 		

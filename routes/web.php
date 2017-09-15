@@ -34,3 +34,15 @@ Route::get('/profile', 'LoginController@profile')->middleware('protect.admin.pag
 Route::post('/profile', 'LoginController@profile_update')->middleware('protect.admin.pages');
 
 Route::get('/profile/request', 'LoginController@request_admin')->middleware('protect.admin.pages');
+
+Route::get('/admin', 'AdminController@home')->middleware('protect.admin.pages.admin');
+
+Route::get('/admin/about', 'AdminController@about')->middleware('protect.admin.pages.admin');
+Route::post('/admin/about', 'AdminController@about_modify')->middleware('protect.admin.pages.admin');
+
+Route::get('/admin/contact', 'AdminController@contact')->middleware('protect.admin.pages.admin');
+Route::post('/admin/contact', 'AdminController@contact_modify')->middleware('protect.admin.pages.admin');
+
+Route::get('/admin/comments', 'AdminController@comments')->middleware('protect.admin.pages.admin');
+Route::get('/admin/comments/approve/{id}', 'AdminController@comments_approve')->middleware('protect.admin.pages.admin');
+Route::get('/admin/comments/delete/{id}', 'AdminController@comments_delete')->middleware('protect.admin.pages.admin');
