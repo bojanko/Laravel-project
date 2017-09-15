@@ -15,8 +15,11 @@
     @unless($user['superadmin'] == 1)
     <div class="row">
         <div class="col-sm-6">
-            <a class="btn btn-default navbar-btn  btn-block"
-            href="/admin/manageuser/revokeadmin/{{ $user['id'] }}">Revoke admin rights</a>
+            @if($user['manager'] == 1)
+                <a class="btn btn-default navbar-btn  btn-block"
+                href="/admin/manageuser/revokeadmin/{{ $user['id'] }}"
+                >Revoke admin rights</a>
+            @endif
         </div>
         <div class="col-sm-6">
             <a class="btn btn-default navbar-btn  btn-block"

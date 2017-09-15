@@ -1,5 +1,7 @@
 <nav class="navbar navbar-default">
 
+ <div class="container-fluid">
+
   <div class="btn-group dropdown navbar-left">
       <button class="btn btn-default dropdown-toggle navbar-btn"
       type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
@@ -26,7 +28,6 @@
         </ul>
     </div>
 
-    <div class="container-fluid">
         <ul class="nav navbar-nav">
             <li><a href="/admin/comments">Moderate comments</a></li>
             <li><a href="/admin/about">About page</a></li>

@@ -33,3 +33,24 @@
 	h1{
 		font-family: 'Teko', sans-serif;
 	}
+	
+	@media (max-width: 768px) {
+		.navbar .navbar-nav {
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+		.dropdown{
+			width: 100%;
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+		.dropdown-toggle{
+			width: 100%;
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+		.container-fluid{
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+	}

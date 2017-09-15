@@ -28,5 +28,5 @@
       </div>
   @endif
 
-  <button type="submit" class="btn btn-default btn-block">Submit</button>
+  <button type="submit" class="btn btn-default btn-block">Send comment</button>
 </form>
