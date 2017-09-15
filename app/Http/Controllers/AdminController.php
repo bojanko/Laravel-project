@@ -9,8 +9,11 @@ use App\Contact;
 use App\Comment;
 use App\AdminRequest;
 use App\User;
+use App\Post;
 use App\Http\Requests\ModifyAboutRequest;
 use App\Http\Requests\ModifyContactRequest;
+use App\Http\Requests\AddPostRequest;
+use App\Http\Requests\EditPostRequest;
 use Session;
 
 class AdminController extends Controller
@@ -123,5 +126,49 @@ class AdminController extends Controller
         $data[0]->delete();
 
         return redirect('/admin/manageuser');
+    }
+
+    public function addpost(){
+        return view("admin.addpost");
+    }
+
+    public function addpost_add(AddPostRequest $request){
+        $record = new Post();
+        $record->naslov = $request->input('title');
+        $record->sadrzaj = $request->input('text');
+        $record->save();
+
+        Session::flash('admin_flash_message','Post successfully inserted!');
+        return redirect('/admin/addpost');
+    }
+
+    public function managepost(){
+        $data = Post::latest()->paginate(10);
+
+        return view("admin.managepost")->with('data', $data);
+    }
+
+    public function managepost_edit($id){
+        $data = Post::where('id', '=', $id)->get();
+
+        return view("admin.managepost_edit")->with('data', $data[0]);
+    }
+
+    public function managepost_edit_save(EditPostRequest $request, $id){
+        $data = Post::where('id', '=', $id)->get();
+        $data[0]->naslov = $request->input('title');
+        $data[0]->sadrzaj = $request->input('text');
+        $data[0]->save();
+
+        Session::flash('admin_flash_message','Post successfully updated!');
+        return view("admin.managepost_edit")->with('data', $data[0]);
+    }
+
+
+    public function managepost_delete($id){
+        $post = Post::where('id', '=', $id)->get();
+        $post[0]->delete();
+
+        return redirect('/admin/managepost');
     }
 }

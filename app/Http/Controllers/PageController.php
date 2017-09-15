@@ -20,7 +20,7 @@ use Session;
 class PageController extends Controller
 {
     public function home(){
-      $data = Post::paginate(5);
+      $data = Post::latest()->paginate(5);
 
       Session::flash('back_page', '/');
       return view("home")->with("content", $data);

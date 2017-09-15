@@ -54,3 +54,11 @@ Route::get('/admin/adminrequests/disapprove/{req_id}', 'AdminController@adminreq
 Route::get('/admin/manageuser', 'AdminController@manageuser')->middleware('protect.admin.pages.admin');
 Route::get('/admin/manageuser/revokeadmin/{id}', 'AdminController@manageuser_revokeadmin')->middleware('protect.admin.pages.admin');
 Route::get('/admin/manageuser/delete/{id}', 'AdminController@manageuser_delete')->middleware('protect.admin.pages.admin');
+
+Route::get('/admin/addpost', 'AdminController@addpost')->middleware('protect.admin.pages.admin');
+Route::post('/admin/addpost', 'AdminController@addpost_add')->middleware('protect.admin.pages.admin');
+
+Route::get('/admin/managepost', 'AdminController@managepost')->middleware('protect.admin.pages.admin');
+Route::get('/admin/managepost/edit/{id}', 'AdminController@managepost_edit')->middleware('protect.admin.pages.admin');
+Route::post('/admin/managepost/edit/{id}', 'AdminController@managepost_edit_save')->middleware('protect.admin.pages.admin');
+Route::get('/admin/managepost/delete/{id}', 'AdminController@managepost_delete')->middleware('protect.admin.pages.admin');
