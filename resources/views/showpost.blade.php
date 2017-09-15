@@ -18,6 +18,7 @@
         @foreach($comments as $com)
             <h3>{{ $com->ime }}</h3>
             <p>{{ $com->sadrzaj }}</p>
+			<hr />
         @endforeach
     @else
         <br />
