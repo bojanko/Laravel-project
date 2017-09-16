@@ -1,4 +1,5 @@
 <?php
+namespace App\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -17,9 +18,9 @@ class UserSeeder extends Seeder
       User::truncate();
 
       $content = new User();
-      $content->name = 'Admin';
-	  $content->email = 'admin@homestead.app';
-      $content->password = Hash::make('Admin');
+      $content->name = env("ADMIN_USERNAME", "Admin");
+	  $content->email = env("ADMIN_EMAIL", "admin@homestead.app");
+      $content->password = Hash::make(env("ADMIN_PASSWORD", "Admin"));
       $content->manager = 1;
 	  $content->superadmin = 1;
       $content->save();
